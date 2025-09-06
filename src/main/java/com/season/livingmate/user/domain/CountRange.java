@@ -1,5 +1,6 @@
 package com.season.livingmate.user.domain;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum CountRange {
@@ -17,11 +18,11 @@ public enum CountRange {
 	public String getDescription() {
 		return description;
 	}
-
+	@JsonCreator
 	public static CountRange fromString(String value) {
 		if (value == null) return null;
 		for (CountRange type : CountRange.values()) {
-			if (type.name().equalsIgnoreCase(value) || type.getDescription().equals(value)) {
+			if (type.name().equalsIgnoreCase(value)) {
 				return type;
 			}
 		}
